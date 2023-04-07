@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{% block title%}
+Sign Up
+{% endblock %}
+{%block body%}
+{% if validation_error!=null and not validation_error.isValid %}
+    {% include "components/alerts.html" %}
+{% endif %}
+<form method="POST">
+    <h3 align="center">
+        Login
+    </h3>
+    <div class="form-group">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Username"><br>
+        <label class="form-label">Email Address</label>
+        <input type="text" name="email" class="form-control" placeholder="Enter your email"><br>
+        <label class="form-label">password1</label>
+        <input type="password" name="password1" class="form-control" placeholder="Enter your password 1"><br>
+        <div class="mb-3">
+            <label class="form-label">password1</label>
+            <input type="password" name="password2" class="form-control" placeholder="Enter your password 2"><br>
+        </div>
+        <div align="center">
+            <button class="btn btn-primary" type="submit">
+                Login
+            </button>
+        </div>
+    </div>
+</form>
+{% endblock %}
