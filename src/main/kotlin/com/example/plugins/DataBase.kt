@@ -1,5 +1,6 @@
 package com.example.plugins
 
+import com.example.data.entity.TaskEntity
 import com.example.data.entity.UserEntity
 import kotlinx.coroutines.Dispatchers
 import org.jetbrains.exposed.sql.Database
@@ -14,6 +15,7 @@ object DataBaseFactory {
         val database = Database.connect(jdbcURL, driverClassName)
         transaction(database) {
             SchemaUtils.create(UserEntity)
+            SchemaUtils.create(TaskEntity)
         }
     }
 
