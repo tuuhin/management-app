@@ -1,4 +1,4 @@
-package com.example.utils
+package com.example.domain.validators
 
 data class Validator(
     val isValid: Boolean,

@@ -9,6 +9,5 @@ object UserEntity : Table() {
     val password = binary("password",100)
     val username = varchar("username", 100).uniqueIndex()
     val createdAt = date("created_at")
-
     override val primaryKey = PrimaryKey(id)
 }

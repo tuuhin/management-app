@@ -4,4 +4,5 @@ data class UserModel(
     val id: Int,
     val username: String,
     val email: String? = null,
+    val isAuthenticated: Boolean = false
 )

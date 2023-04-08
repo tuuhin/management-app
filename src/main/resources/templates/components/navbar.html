@@ -7,12 +7,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
+                {% if not user.isAuthenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/login">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/signup">Sign Up</a>
+                    </li>
+                {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/add-task">Add Task</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/logout">Logout</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
