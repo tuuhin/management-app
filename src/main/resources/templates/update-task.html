@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{% block title%} Create Task {%endblock%}
+{%block body%}
+{% if validation_error!=null and not validation_error.isValid %}
+{% include "components/alerts.html" %}
+{% endif %}
+<form method="POST" class="container-md pt-4">
+    <h3 align="center" class="my-2">
+        Update Task
+    </h3>
+    <p class="text-muted">
+        Updating: {{task.title}}
+    </p>
+    <div class="form-group">
+        <div class="mb-2">
+            <label class="form-label">Title</label>
+            <input type="text" name="title" class="form-control" placeholder="Water the plants" value="{{task.title}}">
+        </div>
+        <div class="mb-2">
+            <label class="form-label">Description</label>
+            <input type="text" name="description" class="form-control" value="{{task.desc}}"
+                   placeholder="Its usual to forget to water my plants thus its better tot get a reminder of it">
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="statusSelector">Status</label>
+            <select class="form-select" id="statusSelector" name="status">
+                {% set options = {'NO_STATUS':'No status', 'WORKING':'working', 'TWEAKING':'Tweaking',
+                'COMPLETED':'Completed'} %}
+                {% for option in options %}
+                <option value="{{option.key}}" {%if option.key == task.status %} selected {%endif%}>{{option.value}}
+                </option>
+                {%endfor %}
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg w-100">Update</button>
+</form>
+{% endblock %}

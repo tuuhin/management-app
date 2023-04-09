@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{task.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{task.status}}</h6>
+        {% if (task.desc is not empty) and (task.desc|length !=1) %}
+        <p class="card-text">{{task.desc}}</p>
+        {%endif%}
+    </div>
+    <div class="card-body">
+        <a href="/update/{{task.id}}" class="btn btn-primary">Update</a>
+        <a href="/delete/{{task.id}}" class="btn btn-danger">Delete</a>
+    </div>
+    <div class="card-footer text-end">
+        Last update at: {{task.updatedAt| date("yyyy-MM-dd")}}
+    </div>
+</div>

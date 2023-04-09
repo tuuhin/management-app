@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{% block title%} Create Task {%endblock%}
+{%block body%}
+{% if validation_error!=null and not validation_error.isValid %}
+{% include "components/alerts.html" %}
+{% endif %}
+<form method="POST" class="container-md">
+    <h3 align="center" class="my-2">
+        Create Task
+    </h3>
+    <div class="form-group">
+        <div class="mb-2">
+            <label class="form-label">Title</label>
+            <input type="text" name="title" class="form-control" placeholder="Water the plants">
+        </div>
+        <div class="mb-2">
+            <label class="form-label">Description</label>
+            <input type="text" name="description" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="statusSelector">Status</label>
+            <select class="form-select" id="statusSelector" name="status">
+                <option value="NO_STATUS" selected>No Status</option>
+                <option value="WORKING">Working</option>
+                <option value="TWEAKING">Tweaking</option>
+                <option value="COMPLETED">Completed</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg w-100">Create</button>
+</form>
+{% endblock %}
