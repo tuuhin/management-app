@@ -10,7 +10,7 @@ object TaskEntity : Table() {
     val desc = text("desc").nullable()
     val createdAt = datetime("createdAt")
     val updatedAt = datetime("updatedAt")
-    val user = integer("user") references UserEntity.id
+    val user = (integer("user") references UserEntity.id)
     val status = enumeration<TaskStatus>("status")
 
     override val primaryKey = PrimaryKey(id)

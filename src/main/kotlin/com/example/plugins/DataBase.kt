@@ -13,6 +13,13 @@ object DataBaseFactory {
     private const val jdbcURL = "jdbc:h2:file:./sqlite3"
     fun init() {
         val database = Database.connect(jdbcURL, driverClassName)
+        // TO USE MYSQL COMMENT THIS OUT
+//        val database = Database.connect(
+//            url = "jdbc:mysql://localhost:3306/mydatabase",
+//            driver = "com.mysql.cj.jdbc.Driver",
+//            user = "myuser",
+//            password = "mypassword"
+//        )
         transaction(database) {
             SchemaUtils.create(UserEntity)
             SchemaUtils.create(TaskEntity)

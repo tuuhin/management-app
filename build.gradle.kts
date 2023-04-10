@@ -41,4 +41,6 @@ dependencies {
     implementation("io.insert-koin:koin-ktor:3.3.1")
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    //TO USE MYSQL COMMENT THIS OUT
+    //implementation ("mysql:mysql-connector-java:8.0.27")
 }

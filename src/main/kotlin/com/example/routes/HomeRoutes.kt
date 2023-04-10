@@ -22,18 +22,19 @@ fun Route.homeRoutes() {
     route(Paths.HOME_PATH) {
         get {
             val user = call.sessions.get<UserModel>()
-            if (user != null) {
-                val tasks = taskFacade.getTasks(user)
-                call.respond(
-                    PebbleContent(
-                        template = "index.html",
-                        mapOf("user" to user, "tasks" to tasks),
-                        contentType = ContentType.Text.Html
-                    )
-                )
+            if (user == null) {
+                call.respondRedirect(Paths.FULL_LOGIN_ROUTE)
                 return@get
             }
-            call.respondRedirect(Paths.FULL_LOGIN_ROUTE)
+            val tasks = taskFacade.getTasks(user)
+            call.respond(
+                PebbleContent(
+                    template = "index.html",
+                    mapOf("user" to user, "tasks" to tasks),
+                    contentType = ContentType.Text.Html
+                )
+            )
+
         }
     }
     route(Paths.ADD_TASK) {

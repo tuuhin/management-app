@@ -54,8 +54,8 @@ class TaskDaoImpl : TaskDaoFacade {
 
     override suspend fun getTasks(userModel: UserModel): List<TaskModel?> {
        return dbQuery {
-            (TaskEntity innerJoin UserEntity).select {
-                TaskEntity.user eq UserEntity.id
+            (TaskEntity innerJoin  UserEntity).select {
+                TaskEntity.user eq userModel.id
             }.map(::rowsToTask)
         }
     }
